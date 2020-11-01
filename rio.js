@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="ArcGIS Query a feature layer"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rainy Days In Rio</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://js.arcgis.com/4.17/esri/themes/light/main.css">
-  <script src="https://js.arcgis.com/4.17/"></script>
-  <script>
-      require([
+require([
     "esri/Map",
     "esri/views/MapView",
     "esri/layers/FeatureLayer",
@@ -19,17 +8,17 @@
 function(
     Map, MapView, FeatureLayer, GraphicsLayer, Graphic
 ){
-    var map = new Map({
+    let map = new Map({
         basemap: "topo-vector"
     });
-    var view = new MapView({
+    let view = new MapView({
         container: "viewDiv",
         map: map,
         center: [-118.80543, 34.02700],
-        zoom: 12
+        zoom: 14
     });
     /*Challenge */
-    var sql = "TRL_NAME like '%Canyon%'";
+    let sql = "TRL_NAME like '%Canyon%'";
 
     view.when(function(){
         queryFeatureLayerView(view.center, 1500, "intersects")
@@ -39,17 +28,17 @@ function(
         queryFeatureLayerView(event.mapPoint, 1500, "intersects", sql)
     });
 
-    var featureLayer = new FeatureLayer({
+    let featureLayer = new FeatureLayer({
         url:"https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads_Styled/FeatureServer/0",
     });
 
-    var graphicsLayer = new GraphicsLayer();
+    let graphicsLayer = new GraphicsLayer();
     map.add(graphicsLayer);
 
     function addGraphics(result){
         graphicsLayer.removeAll();
         result.features.forEach(function(feature){
-            var g = new Graphic({
+            let g = new Graphic({
                 geometry: feature.geometry,
                 attributes: feature.attributes,
                 symbol: {
@@ -71,7 +60,7 @@ function(
     }
     /*query to the server */
     function queryFeatureLayer(point, distance, spatialRelationship, sqlExpression){
-        var query = {
+        let query = {
             geometry: point,
             distance: distance,
             spatialRelationship: spatialRelationship,
@@ -102,7 +91,7 @@ function(
         /* wait for the layerView to be ready and then query features */
         view.whenLayerView(featureLayer).then(function(featureLayerView){
             if (featureLayerView.updating){
-                var handle = featureLayerView.watch("updating", function(isUpdating){
+                let handle = featureLayerView.watch("updating", function(isUpdating){
                     if (!isUpdating){
                         featureLayerView.queryFeatures(query).then(function(result){
                             addGraphics(result)
@@ -117,11 +106,4 @@ function(
             }
         });
     }
-});</script>
-</head>
-<body>
-            <h3>Special Days to go out and join a trail: </h3>
-
-            <div id="viewDiv"> </div>
-</body>
-</html>
+});
