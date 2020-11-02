@@ -25,7 +25,67 @@ function init(Map, SceneView, MapImageLayer, FeatureLayer,
         });
         layersForMap.push(newlayer2);
         var featureLayer1 = new FeatureLayer({
-            
-        })
-    }
-)
+            url: "https://services.nationalmap.gov/arcgis/rest/services/structures/MapServer/0"
+        });
+        var map = new Map({
+            basemap: "dark-gray",
+            ground: "world-elevation",
+            layers: layersForMap
+        });
+        var view = new SceneView({
+            container: "viewDiv",
+            map: map
+        });
+        var toggle = new BasemapToggle({
+            vie: view,
+            nextBasemap: "hybrid"
+        });
+
+        var searchWidget = new Search({
+            view: view
+        });
+
+        var legend = new Legend({
+            view: view
+        });
+
+        var homeWidget = new Home({
+            view: view
+        });
+
+        var layerList = new LayerList({
+            view: view
+        });
+
+        view.ui.add(toggle, "bottom-left");
+        view.ui.add(searchWidget, {
+            position:"top-right",
+            index: 2
+        });
+
+        view.ui.add(layerList, {
+            position: "top-left"
+        });
+        var cam = new Camera({
+            heading: 15,
+            tilt: 48,
+            position: {
+                "latitude": 19.5,
+                "longitude": -95.3,
+                "z": 1500000,
+                "spatialReference": {"wkid": 3857}
+            }
+        });
+
+        function toggleLayerList(){
+            $(".esri-layer-list").toggleClass('visibility');
+        };
+        function toggleLegendList(){
+            $(".esri-legend").toggleClass('visibility');
+        };
+        view.camera = cam;
+        view.ui.add(legend, "bottom-right");
+        view.ui.add(homeWidget, "right-right");
+        $("#layerButton").click(toggleLayerList);
+        $("#legendButton").click(toggleLegendList);
+    });
