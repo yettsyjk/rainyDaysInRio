@@ -1,46 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="ArcGIS Query a feature layer"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rainy Days In Rio</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://js.arcgis.com/4.17/esri/themes/light/main.css">
-  <script src="https://js.arcgis.com/4.17/"></script>
-  <script>
-    require([
-    "esri/Map",
-    "esri/views/MapView",
-    "esri/widgets/BasemapToggle",
-    "esri/widgets/BasemapGallery"
-],
-function(
-    Map, MapView, BasemapToggle, BasemapGallery
-){
-    /* var required to hoist */
-    var map = new Map({
-        basemap: "topo-vector"
-    });
-    var view = new MapView({
-        container: "viewDiv",
-        map: map,
-        center: [-22.970722, -43.182365],
-        zoom: 8
-    });
 
-    var basemapToggle = new BasemapToggle({
-        view: view,
-        secondMap: "satellite"
-    });
-    view.ui.add(basemapToggle, "bottom-right");
-});</script>
-</head>
-<body>
-            <h3>Want to travel virtually? <br/>
-            Try toggling the views to take you any where here on Earth.<br/>
-        Happy Travels</h3>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Traveling the globe 3D Style</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/soft.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css">
 
-            <div id="viewDiv"> </div>
-</body>
+  <script src="https://js.arcgis.com/4.4/"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+<script type="text/javascript" src="\mapConfigData.json"></script>
+<script src="https://use.fontawesome.com/167af2010b.js"></script>
+    
+    </head>
+    <body>
+       <div id="topTitle" class="app-titles">
+           <h2 id="appTitle"></h2>
+           <button title="Layers" id="layerButton" class="app-button fa fa-list-ul"></button>
+           <button title="Map Key" id="legendButton" class="app-button fa fa-key"></button>
+       </div>
+       <div id="layerListDiv" class="app-titles">Layers</div>
+       <div id="viewDiv"></div>
+        
+        <script src="./js/soft.js" async defer></script>
+    </body>
 </html>

@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+}
+
+#viewDiv {
+    background-color: #a8a5a5;
+    padding: 0;
+    margin: 0;
+    height: calc(100% - 50%);
+    width: 100%;
+    top: 50px;
+    position: absolute;
+}
+
+#topTitle {
+    height: 50px;
+    width: 100%;
+    background-color: #2a323b;
+    text-align: center;
+    margin: 0px;
+}
+
+#appTitle {
+    text-align: center;
+    margin: 0px;
+}
+
+#layerList {
+    height: 500px;
+    width: 0px;
+    background-color: #d3baba;
+    z-index: 10;
+}
+
+#layerButton, #legendButton {
+    margin-left: 5px;
+    margin-top: -30px;
+    float: left;
+    outline: none;
+}
+
+.app-titles {
+    color: #fff;
+}
+
+.app-button {
+    background-color: inherit;
+    color: #fff;
+    height: 40px;
+    width: 60px;
+    border-radius: 6px;
+    border: unset;
+}
+.app-button:hover{
+    background-color: #223953;
+    box-shadow: 5px 5px 5px #171f27;
+    cursor: pointer;
+}
+.app_button:active {
+    background-color: #31649e;
+    border: solid 2px #808080;
+}
+.esri-layer-list, .esri-legend {
+    display: none;
+}
+
+.esri-widget {
+    opacity: 0.6;
+}
+
+.esri-widget:hover{
+    opacity: 0.9;
+}
+.visibility {
+    display: block;
+}

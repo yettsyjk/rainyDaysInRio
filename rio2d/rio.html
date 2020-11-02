@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="ArcGIS Query a feature layer"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainy Days In Rio</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.17/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.17/"></script>
+  <script>
+    require([
+    "esri/Map",
+    "esri/views/MapView",
+    "esri/widgets/BasemapToggle",
+    "esri/widgets/BasemapGallery"
+],
+function(
+    Map, MapView, BasemapToggle, BasemapGallery
+){
+    /* var required to hoist */
+    var map = new Map({
+        basemap: "topo-vector"
+    });
+    var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-22.970722, -43.182365],
+        zoom: 8
+    });
+
+    var basemapToggle = new BasemapToggle({
+        view: view,
+        secondMap: "satellite"
+    });
+    view.ui.add(basemapToggle, "bottom-right");
+});</script>
+</head>
+<body>
+            <h3>Want to travel virtually? <br/>
+            Try toggling the views to take you any where here on Earth.<br/>
+        Happy Travels</h3>
+
+            <div id="viewDiv"> </div>
+</body>
+</html>
