@@ -3,7 +3,7 @@ body {
 }
 
 #viewDiv {
-    background-color: #a8a5a5;
+    background-color: #9c7a7a;
     padding: 0;
     margin: 0;
     height: calc(100% -50%);
@@ -15,7 +15,7 @@ body {
 #topTitle {
     height: 50px;
     width: 100%;
-    background-color: #2a323b;
+    background-color: #92b9e6;
     text-align: center;
     margin: 0px;
 }
@@ -28,7 +28,7 @@ body {
 #layerList {
     height: 500px;
     width: 0px;
-    background-color: #d3baba;
+    background-color: #992a2a;
     z-index: 10;
 }
 
